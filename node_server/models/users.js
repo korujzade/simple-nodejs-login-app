@@ -5,7 +5,7 @@ function User() {
 	this.login = function(username, password, res) {
 		connection.acquire(function(err, con) {
 			con.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password], function(err, result) {
-				if (typeof username != 'undefined' || typeof password != 'undefined') {
+				if (typeof username != 'undefined' && typeof password != 'undefined') {
 					console.log("username: " + username + " password: " + password);
 					if (err) {
 						res.send(
